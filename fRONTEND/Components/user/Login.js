@@ -34,8 +34,9 @@ const Login = () => {
   return (
     
     <div style={{
-      backgroundImage: `url("https://via.placeholder.com/500")`
-    }} >
+      backgroundImage: `url("https://www.intotheminds.com/blog/app/uploads/desk-research-group-tn.jpg")`,
+    }}
+   >
       
      
           <div

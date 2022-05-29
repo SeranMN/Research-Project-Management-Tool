@@ -21,8 +21,16 @@ const getUserById = async (req, res) => {
         .catch((err) => res.send(err))
     
 }
+const setGroupId = async (req, res) => {
+    const id = req.params.id
+    User.findOneAndUpdate({ regNo: id }, req.body)
+        .then((data) => res.status(200).send(data))
+        .catch((err) => res.status(500).send(err))
+    
+}
 module.exports = {
     addUser,
     getUser,
-    getUserById
+    getUserById,
+    setGroupId
 }

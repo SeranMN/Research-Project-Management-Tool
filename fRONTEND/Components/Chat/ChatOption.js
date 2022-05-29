@@ -79,7 +79,8 @@ export default function ChatOption(open) {
     <div>
      
         
-          <SettingsIcon sx ={{position: 'sticky',right: 0,left: 5000}} onClick={toggleDrawer('right', true)}>Right</SettingsIcon>
+      <SettingsIcon sx={{ position: 'sticky', right: 0, left: 5000 }}
+        onClick={toggleDrawer('right', true)}>Right</SettingsIcon>
           <SwipeableDrawer
             anchor={'right'}
             open={state['right']}

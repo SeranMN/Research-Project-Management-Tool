@@ -1,9 +1,11 @@
-import { Card,CardContent,Typography, CardMedia, Button} from '@mui/material'
+import { Card,CardContent,Typography, CardMedia, Button, Grid, Paper} from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import { Box } from '@mui/system'
 import { deepOrange, deepPurple,indigo } from '@mui/material/colors';
 import Avatar from '@mui/material/Avatar';
-import { Link,useParams,useNavigate } from 'react-router-dom'
+import { Link, useParams, useNavigate } from 'react-router-dom'
+import GroupAddIcon from '@mui/icons-material/GroupAdd';
+import StudentDashboard from '../../DashBords/StudentDashboard';
 import axios from 'axios';
 const profile = () => {
   const det = sessionStorage.getItem("user")
@@ -35,13 +37,17 @@ const [user,setUser] =useState('')
           </Typography>
           <Typography variant="subtitle1" color="white" component="div">
            {user.regNo}
+            </Typography>
+            <Typography variant="subtitle1" color="white" component="div">
+           {user.groupId}
           </Typography>
         </CardContent>
         
       </Box>
       
     </Card>
-    <Button onClick={()=>{sessionStorage.removeItem('user'); navigate('/')}}>Logout</Button>
+      <Button onClick={() => { sessionStorage.removeItem('user'); navigate('/') }}>Logout</Button>
+     <StudentDashboard/>
     </>
   )
 }

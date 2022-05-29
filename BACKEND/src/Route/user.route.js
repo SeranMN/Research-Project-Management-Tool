@@ -6,5 +6,6 @@ module.exports = function () {
     router.post('/add', userController.addUser);
     router.get('/', userController.getUser)
     router.get('/:id', userController.getUserById);
+    router.put('/groupAdd/:id', userController.setGroupId);
     return router;
 }

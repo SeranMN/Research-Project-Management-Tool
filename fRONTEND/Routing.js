@@ -8,6 +8,7 @@ import Chat from './Components/Chat/chat'
 import ChanelContainer from './Components/Chat/ChatContainer'
 import CreateChannel from './Components/Chat/CreateChannel'
 import CreateStaff from './Components/user/CreateStaff'
+import Creategroup from './Components/Group/Creategroup'
 const Routing = () => {
     return (
         <BrowserRouter>
@@ -18,7 +19,7 @@ const Routing = () => {
                 <Route path='/chat' exact element={<ChanelContainer />} />
                 <Route path='/CreateTeam' exact element={<CreateChannel />} />
                 <Route path='/CreateStaff' exact element={<CreateStaff />} />
-                
+                <Route path='/CreateGroup' exact element={<Creategroup />} />
             </Routes>
         </BrowserRouter>
   );
