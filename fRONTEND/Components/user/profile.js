@@ -5,6 +5,7 @@ import { deepOrange, deepPurple,indigo } from '@mui/material/colors';
 import Avatar from '@mui/material/Avatar';
 import { Link, useParams, useNavigate } from 'react-router-dom'
 import GroupAddIcon from '@mui/icons-material/GroupAdd';
+import SupDashboard from '../../DashBords/SupDashboard';
 import StudentDashboard from '../../DashBords/StudentDashboard';
 import axios from 'axios';
 const profile = () => {
@@ -13,7 +14,7 @@ const profile = () => {
   const navigate = useNavigate();
   console.log(userRole.userRole)
   console.log(det)
-const [user,setUser] =useState('')
+const [user,setUser] =useState([])
   useEffect(() => {
     if (userRole.userRole == 'student') {
       axios.get(`http://localhost:5001/user/${det}`)
@@ -25,6 +26,8 @@ const [user,setUser] =useState('')
         .catch((err) => console.log(err))
     }
   }, [])
+
+  sessionStorage.setItem("userdet",JSON.stringify(user))
   console.log(user)
   return (
     <>
@@ -47,7 +50,8 @@ const [user,setUser] =useState('')
       
     </Card>
       <Button onClick={() => { sessionStorage.removeItem('user'); navigate('/') }}>Logout</Button>
-     <StudentDashboard/>
+      {userRole.userRole == 'student'?(<StudentDashboard/>):(<SupDashboard/>) }
+    
     </>
   )
 }

@@ -9,6 +9,8 @@ import ChanelContainer from './Components/Chat/ChatContainer'
 import CreateChannel from './Components/Chat/CreateChannel'
 import CreateStaff from './Components/user/CreateStaff'
 import Creategroup from './Components/Group/Creategroup'
+import SupervisorView from './Components/Supervisor/SupervisorView'
+import Reqests from './Components/Supervisor/Requests'
 const Routing = () => {
     return (
         <BrowserRouter>
@@ -20,6 +22,8 @@ const Routing = () => {
                 <Route path='/CreateTeam' exact element={<CreateChannel />} />
                 <Route path='/CreateStaff' exact element={<CreateStaff />} />
                 <Route path='/CreateGroup' exact element={<Creategroup />} />
+                <Route path='/supervisors' exact element={<SupervisorView />} />
+                <Route path = '/requests' exact element = {<Reqests/>} />
             </Routes>
         </BrowserRouter>
   );

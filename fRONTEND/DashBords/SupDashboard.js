@@ -1,7 +1,7 @@
 import React from "react";
 import { Grid, Typography, Paper } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-const StudentDashboard = () => {
+const SupDashboard = () => {
   const navigate = useNavigate();
   return (
     <Grid sx={{ flexGrow: 1 }}>
@@ -22,7 +22,7 @@ const StudentDashboard = () => {
                 height={100}
                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-SRsEyJEb80O0oFKxphavjLuwfRTe4lw-EVEubFhEc3vUTPdS04aK8vz936NBxMLD7Mk&usqp=CAU"
               />
-              <Typography variant="h6">Create Group</Typography>
+              <Typography variant="h6">View Groups</Typography>
             </Paper>
           </Grid>
           <Grid item>
@@ -31,17 +31,15 @@ const StudentDashboard = () => {
                 height: 150,
                 width: 150,
                 backgroundColor: "#fff",
-                
+
               }}
-              onClick={() => {
-                navigate('/supervisors')
-              }}
+              onClick = {()=>navigate('/requests')}
             >
               <img
                 height={100}
                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-SRsEyJEb80O0oFKxphavjLuwfRTe4lw-EVEubFhEc3vUTPdS04aK8vz936NBxMLD7Mk&usqp=CAU"
               />
-              <Typography variant="h6">Supervisors</Typography>
+              <Typography variant="h6">Create Group</Typography>
             </Paper>
           </Grid>
           <Grid item>
@@ -68,4 +66,4 @@ const StudentDashboard = () => {
   );
 };
 
-export default StudentDashboard;
+export default SupDashboard;
