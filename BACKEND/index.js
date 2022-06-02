@@ -1,8 +1,10 @@
 const express = require("express");
 const cors = require('cors');
 const bodyParser = require("body-parser");
-const dotenv = require('dotenv');
+const dotenv = require('dotenv').config();
 const connectDB = require("./src/config/config");
+const SubmissionRouter = require("./src/Route/submission.router")
+
 const user = require('./src/Route/user.route');
 const login = require('./src/Route/login.route');
 const staff = require('./src/Route/staff.route');
@@ -15,6 +17,9 @@ app.use(cors());
 app.use(bodyParser.json());
 
 connectDB();
+
+app.use("/submission",SubmissionRouter)
+
 app.use('/user', user());
 app.use('/login', login())
 app.use('/Staff', staff())
