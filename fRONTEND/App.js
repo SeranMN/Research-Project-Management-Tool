@@ -1,8 +1,9 @@
 import React from "react";
+import Routing from "./Routing";
 export function App() {
     return (
-        <div>
-            Welcome
-        </div>
+        <>
+            <Routing/>
+        </>
     );
 }
