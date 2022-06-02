@@ -9,12 +9,14 @@
   },
   "author": "IT20021566",
   "license": "ISC",
-  "devDependencis":{
- "parcel": "^2.5.0"
+  "devDependencis": {
+    "parcel": "^2.5.0"
   },
   "dependencies": {
-   
     "react": "^18.1.0",
     "react-dom": "^18.1.0"
+  },
+  "devDependencies": {
+    "parcel": "^2.5.0"
   }
 }
