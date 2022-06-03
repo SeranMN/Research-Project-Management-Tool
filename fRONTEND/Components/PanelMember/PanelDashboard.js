@@ -111,11 +111,11 @@ const useStyles = makeStyles((theme) => ({
 
 const PanelDashboard = () => {
 
-    const navgate = useNavigate();
+    const navigate = useNavigate();
 
     const logout = () => {
         sessionStorage.removeItem("token")
-        navgate('/login')
+        navigate('/')
     }
     const classes = useStyles();
     const [header, setHeader] = useState({
@@ -143,25 +143,33 @@ const PanelDashboard = () => {
                 <ListItemText primary="Dashboard" />
             </ListItem>
             <ListItem button onClick={() => {
-                setView(<AddHotels />);
-                setHeader({ title: 'Add Hotels', icon: <AddIcon /> });
+                // setView(<AddHotels />);
+                setHeader({ title: 'Add Marks', icon: <AddIcon /> });
             }}>
                 <ListItemIcon className={classes.ListItemIcon}>
                     <AddIcon />
                 </ListItemIcon>
-                <ListItemText primary="Add Hotels" />
+                <ListItemText primary="Add Marks" />
+            </ListItem>
+            <ListItem button onClick={() => {
+                // setView(<AddHotels />);
+                setHeader({ title: 'Evaluate Topics', icon: <AddIcon /> });
+            }}>
+                <ListItemIcon className={classes.ListItemIcon}>
+                    <AddIcon />
+                </ListItemIcon>
+                <ListItemText primary="Evaluate Topics" />
             </ListItem>
             <ListItem button onClick={() => {
                 // setView(<ViewHotels />);
                 setHeader({
-                    title: 'View Hotels', icon: <PreviewIcon />
+                    title: 'View Submissions', icon: <PreviewIcon />
                 });
             }}>
                 <ListItemIcon className={classes.ListItemIcon}>
                     <PreviewIcon />
                 </ListItemIcon>
-                <ListItemText primary="View Hotels" />
-
+                <ListItemText primary="View Submissions" />
             </ListItem>
 
         </div>
