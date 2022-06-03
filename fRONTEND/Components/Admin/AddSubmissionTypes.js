@@ -1,5 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import { makeStyles } from '@material-ui/core/styles';;
+import React, { useState, useEffect } from 'react'
+import FormControl from '@material-ui/core/FormControl';
+import InputLabel from '@material-ui/core/InputLabel';
+import { makeStyles } from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button'
+import Typography from '@material-ui/core/Typography'
+import Container from '@material-ui/core/Container'
+import Paper from '@mui/material/Paper';
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
@@ -34,12 +41,13 @@ const AddSubmissionTypes = () => {
         e.preventDefault()
 
         const newRecipe = {
-            "submissionFormat": subtype,
-            "deadline": ingredients,
+            "name": recipeName,
+            "ingredients": ingredients,
             "description": description
         }
 
         axios.post("http://localhost:5000/recipe/add", newRecipe).then((res) => {
+            navigate('/');
 
         }).catch((err) => {
             console.log(err)
