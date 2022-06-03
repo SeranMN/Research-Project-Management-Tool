@@ -22,7 +22,7 @@ import AddIcon from '@mui/icons-material/Add';
 import PreviewIcon from '@mui/icons-material/Preview';
 import { useNavigate } from 'react-router-dom';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
-import AddSubmissionTypes from './AddSubmissionTypes';
+import EvaluateDocuments from '../Components/supervisor/EvaluateDocuments';
 
 const drawerWidth = 240;
 
@@ -104,13 +104,14 @@ const useStyles = makeStyles((theme) => ({
         height: 240,
     },
     ListItemIcon: {
-        marginLeft: 6,
+        marginLeft: 7,
         minWidth: 48
     },
 
 }));
 
-const AdminDashboard = () => {
+const SupervisorDashboard = () => {
+
     const navigate = useNavigate();
 
     const logout = () => {
@@ -143,49 +144,33 @@ const AdminDashboard = () => {
                 <ListItemText primary="Dashboard" />
             </ListItem>
             <ListItem button onClick={() => {
-                setView(<AddHotels />);
-                setHeader({ title: 'Allocate Pannel Memebers', icon: <AddIcon /> });
+                // setView(<AddHotels />);
+                setHeader({ title: 'Topics', icon: <AddIcon /> });
             }}>
                 <ListItemIcon className={classes.ListItemIcon}>
                     <AddIcon />
                 </ListItemIcon>
-                <ListItemText primary="Allocate Pannel" />
+                <ListItemText primary="Topics" />
             </ListItem>
             <ListItem button onClick={() => {
-                // setView(<ViewHotels />);
+                // setView(<AddHotels />);
+                setHeader({ title: 'Chat', icon: <AddIcon /> });
+            }}>
+                <ListItemIcon className={classes.ListItemIcon}>
+                    <AddIcon />
+                </ListItemIcon>
+                <ListItemText primary="Chat" />
+            </ListItem>
+            <ListItem button onClick={() => {
+                setView(<EvaluateDocuments />);
                 setHeader({
-                    title: 'Add Marking ', icon: <PreviewIcon />
+                    title: 'Evaluate Documents', icon: <PreviewIcon />
                 });
             }}>
                 <ListItemIcon className={classes.ListItemIcon}>
                     <PreviewIcon />
                 </ListItemIcon>
-                <ListItemText primary="Add Marking Schemes" />
-
-            </ListItem>
-            <ListItem button onClick={() => {
-                // setView(<ViewHotels />);
-                setHeader({
-                    title: 'Add Documents ', icon: <PreviewIcon />
-                });
-            }}>
-                <ListItemIcon className={classes.ListItemIcon}>
-                    <PreviewIcon />
-                </ListItemIcon>
-                <ListItemText primary="Add Documents " />
-
-            </ListItem>
-            <ListItem button onClick={() => {
-                setView(<AddSubmissionTypes/>);
-                setHeader({
-                    title: 'Add Submission Types ', icon: <PreviewIcon />
-                });
-            }}>
-                <ListItemIcon className={classes.ListItemIcon}>
-                    <PreviewIcon />
-                </ListItemIcon>
-                <ListItemText primary="Add Submission Types" />
-
+                <ListItemText primary="Evaluate Documents" />
             </ListItem>
 
         </div>
@@ -208,6 +193,7 @@ const AdminDashboard = () => {
     const handleDrawerClose = () => {
         setOpen(false);
     };
+
 
     return (
         <div className={classes.root}>
@@ -237,7 +223,7 @@ const AdminDashboard = () => {
             >
                 <div className={classes.toolbarIcon}>
                     <Typography variant='h6' style={{ fontWeight: 500 }}>
-                       SLIIT
+                        SLIIT
                     </Typography>
                     <IconButton onClick={handleDrawerClose}>
                         <ChevronLeftIcon />
@@ -258,13 +244,13 @@ const AdminDashboard = () => {
                     </Grid>
                     <Box pt={4}>
                         {/* <Typography variant="body2" color="text.secondary" align="center" marginTop={5} >
-                            {'Copyright © '}
-                            <Link color="inherit" href="https://mui.com/">
-                                Traveler.com
-                            </Link>{' '}
-                            {new Date().getFullYear()}
-                            {'.'}
-                        </Typography> */}
+                        {'Copyright © '}
+                        <Link color="inherit" href="https://mui.com/">
+                            Traveler.com
+                        </Link>{' '}
+                        {new Date().getFullYear()}
+                        {'.'}
+                    </Typography> */}
                     </Box>
                 </Container>
             </main>
@@ -272,4 +258,4 @@ const AdminDashboard = () => {
     )
 }
 
-export default AdminDashboard
+export default SupervisorDashboard
