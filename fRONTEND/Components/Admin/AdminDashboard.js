@@ -22,6 +22,7 @@ import AddIcon from '@mui/icons-material/Add';
 import PreviewIcon from '@mui/icons-material/Preview';
 import { useNavigate } from 'react-router-dom';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
+import AddSubmissionTypes from './AddSubmissionTypes';
 
 const drawerWidth = 240;
 
@@ -103,7 +104,7 @@ const useStyles = makeStyles((theme) => ({
         height: 240,
     },
     ListItemIcon: {
-        marginLeft: 7,
+        marginLeft: 6,
         minWidth: 48
     },
 
@@ -172,6 +173,18 @@ const AdminDashboard = () => {
                     <PreviewIcon />
                 </ListItemIcon>
                 <ListItemText primary="Add Documents " />
+
+            </ListItem>
+            <ListItem button onClick={() => {
+                setView(<AddSubmissionTypes/>);
+                setHeader({
+                    title: 'Add Submission Types ', icon: <PreviewIcon />
+                });
+            }}>
+                <ListItemIcon className={classes.ListItemIcon}>
+                    <PreviewIcon />
+                </ListItemIcon>
+                <ListItemText primary="Add Submission Types" />
 
             </ListItem>
 

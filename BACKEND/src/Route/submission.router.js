@@ -75,15 +75,18 @@ router.get("/sub/:type", async (req, res) => {
 
 router.put("/update/:id", upload.single("file"), async (req, res) => {
     console.log("first")
-    let folder = "final report"
+    let ItNo = req.body.fileName
+    let folder = req.body.folder
+
     try {
       let submission = await Submission.findById(req.params.id);
+      console.log(submission.cloudinary_id,"subcloud")
       // Delete file from cloudinary
       await cloudinary.uploader.destroy(submission.cloudinary_id);
       // Upload file to cloudinary
       let result;
       if (req.file) {
-        result = await cloudinary.uploader.upload(req.file.path,{ resource_type: "auto", public_id: "InternPaper", folder: folder});
+        result = await cloudinary.uploader.upload(req.file.path,{ resource_type: "auto", public_id: ItNo, folder: folder});
       }
       const data = {
         name: req.body.name || submission.name,

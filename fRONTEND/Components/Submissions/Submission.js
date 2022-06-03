@@ -1,11 +1,45 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useMemo } from 'react'
 import { useDropzone } from 'react-dropzone'
 import { useCallback } from 'react'
-import { Box } from '@mui/material'
-import { Button } from '@material-ui/core'
+import { Box, Typography } from '@mui/material'
+import { Button } from '@mui/material'
 import UploadFileIcon from '@mui/icons-material/UploadFile';
 import InsertDriveFileIcon from '@mui/icons-material/InsertDriveFile';
 import axios from 'axios'
+import SubmissionStatus from './SubmissionStatus'
+import { Stack } from '@mui/material'
+
+const baseStyle = {
+    flex: 1,
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    padding: '40px',
+    borderWidth: 2,
+    borderRadius: 2,
+    borderColor: '#eeeeee',
+    borderStyle: 'dashed',
+    backgroundColor: '#fafafa',
+    color: '#bdbdbd',
+    outline: 'none',
+    transition: 'border .24s ease-in-out',
+    width: '50%',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    marginTop:30
+};
+
+const focusedStyle = {
+    borderColor: '#2196f3'
+};
+
+const acceptStyle = {
+    borderColor: '#00e676'
+};
+
+const rejectStyle = {
+    borderColor: '#ff1744'
+};
 
 const Submission = () => {
     const [file, setFile] = useState()
@@ -32,6 +66,21 @@ const Submission = () => {
         })
     }
 
+    const handleEdit = () => {
+        let formData2 = new FormData();
+        formData2.append('file', file)
+        formData2.append('name', "Navod")
+        formData2.append('fileName', file.name)
+        formData2.append('folder', "presentation")
+
+        axios.put(`http://localhost:5001/submission/update/6298bdaddd8b19373e0445d9`, formData2).then((res) => {
+            alert('Edited sucessfully')
+            window.location.reload()
+        }).catch((err) => {
+            console.log(err)
+        })
+    }
+
     useEffect(() => {
         function getSubmission() {
             axios.get("http://localhost:5001/submission/6298bdaddd8b19373e0445d9").then((res) => {
@@ -51,7 +100,7 @@ const Submission = () => {
         }
     }, [file])
 
-    const { getRootProps, getInputProps, isDragActive } = useDropzone({
+    const { getRootProps, getInputProps, isDragActive, isFocused, isDragReject, isDragAccept } = useDropzone({
         onDrop,
         accept: {
             'application/msword': ['.doc'],
@@ -63,50 +112,73 @@ const Submission = () => {
         multiple: false
     })
 
+    const style = useMemo(() => ({
+        ...baseStyle,
+        ...(isFocused ? focusedStyle : {}),
+        ...(isDragAccept ? acceptStyle : {}),
+        ...(isDragReject ? rejectStyle : {})
+    }), [
+        isFocused,
+        isDragAccept,
+        isDragReject
+    ]);
+
     // console.log(getInputProps(),getRootProps())
     return (
-        <div>
-            <Box sx={{
-                width: "100%",
-                height: 350,
-                backgroundColor: 'primary.dark',
 
-            }} {...getRootProps()}>
+        <div>
+            <Typography variant='h4' style={{ textAlign: "center" }}>Answer to assignemnt 1</Typography>
+            <Typography variant='h5' style={{ textAlign: "center", paddingBottom: 8 }}>This is the special message</Typography>
+            <div>
+                <SubmissionStatus submission={submission} />
+            </div>
+            <div{...getRootProps({ style })}>
                 <input {...getInputProps()} />
-                {isDragActive ? 'Drag Active' : 'You can drop your files here.'}
+                {isDragReject &&
+                    <div style={{ color: "red" }}>
+                        Not Supported your file format
+                    </div>
+                }
+                <p>Drag 'n' drop your file, or click to select your file</p>
                 {!file &&
-                    <UploadFileIcon />
+
+                    <UploadFileIcon fontSize='large' />
                 }
                 {file &&
                     <div>
-                        <InsertDriveFileIcon />
-                        {file.name}
+                        <div style={{ textAlign: "center" }}>
+                            <InsertDriveFileIcon fontSize='large' />
+                        </div>
+                        <div>
+                            {file.name}
+                        </div>
+
                     </div>
                 }
 
-            </Box>
-            <div>
-                {file && <Button onClick={handleSubmit}>Submit</Button>}
-            </div>
-            <div>
-                {!file && <Button disabled>Submit</Button>}
-            </div>
-            {console.log(submission)}
-            <div>
-                Your Submssion
-            </div>
-            <a href={submission.avatar}><img src="https://img.icons8.com/carbon-copy/100/undefined/file.png" /></a>
+            </div >
+            {!submission &&
+                <div style={{ textAlign: "center", marginTop: 15 }}>
+                    <div>
+                        {file && <Button variant='contained' onClick={handleSubmit}>Submit</Button>}
+                    </div>
+                    <div>
+                        {!file && <Button disabled>Submit</Button>}
+                    </div>
+                </div>
+            }
+            {submission &&
+                <div style={{ textAlign: "center", marginTop: 15 }}>
+                    <div>
+                        {file && <Button variant='contained' onClick={handleEdit}>Edit Submit</Button>}
+                    </div>
+                    <div>
+                        {!file && <Button variant='contained' disabled>Edit Submit</Button>}
+                    </div>
+                </div>
+            }
 
-            {submission &&
-                <div>
-                    {submission.cloudinary_id}
-                </div>
-            }
-            {submission &&
-                <div>
-                    {submission.time}
-                </div>
-            }
+
         </div>
     )
 }
