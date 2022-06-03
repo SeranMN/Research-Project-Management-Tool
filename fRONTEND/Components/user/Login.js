@@ -33,7 +33,7 @@ const Login = () => {
     axios.post('http://localhost:5001/login/login', det)
       .then((res) => {
         if (res.data != "") {
-         
+          
           sessionStorage.setItem("user", det.regNo)
           console.log(det.regNo)
           navigate(`/profile/${res.data}`)

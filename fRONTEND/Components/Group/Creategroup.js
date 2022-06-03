@@ -53,7 +53,7 @@ const Creategroup = () => {
  
   const SUBMIT = async () => {
     const Icount = parseInt(count)+1
-    const groupId = "RG/"+year+"/"+Icount
+    const groupId = "RG_"+year+"_"+Icount
     const group = {
       GroupId:groupId,
       Members: [name1, name2, name3, name4],

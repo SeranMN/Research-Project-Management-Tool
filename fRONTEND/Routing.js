@@ -16,6 +16,8 @@ import Creategroup from './Components/Group/Creategroup'
 import Submission from './Components/Submissions/Submission';
 import SupervisorDashboard from './DashBords/supervisorDashboard';
 
+import SupervisorView from './Components/Supervisor/SupervisorView'
+import Reqests from './Components/Supervisor/Requests'
 const Routing = () => {
 
     return (
@@ -32,6 +34,8 @@ const Routing = () => {
                 <Route path='/CreateStaff' exact element={<CreateStaff />} />
                 <Route path='/CreateGroup' exact element={<Creategroup />} />
                 <Route path='/submission' exact element={<Submission />} />
+                <Route path='/supervisors' exact element={<SupervisorView />} />
+                <Route path = '/requests' exact element = {<Reqests/>} />
             </Routes>
         </BrowserRouter>
   );
