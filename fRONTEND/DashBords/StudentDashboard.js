@@ -15,7 +15,8 @@ const StudentDashboard = () => {
                 backgroundColor: "#fff",
               }}
               onClick={() => {
-                navigate("/CreateGroup");
+               // navigate("/CreateGroup");
+                navigate('/topicAprovalReq');
               }}
             >
               <img

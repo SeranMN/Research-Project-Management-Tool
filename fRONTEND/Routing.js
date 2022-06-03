@@ -17,6 +17,7 @@ import CreateStaff from './Components/user/CreateStaff'
 import Creategroup from './Components/Group/Creategroup'
 import SupervisorView from './Components/Supervisor/SupervisorView'
 import Reqests from './Components/Supervisor/Requests'
+import TopicReg from './Components/Topic/TopicReg';
 const Routing = () => {
 
     return (
@@ -26,7 +27,7 @@ const Routing = () => {
                 <Route path='/signin' exact element={<CreateAccount />} />
                 <Route path='/admindashboard' exact element={<AdminDashboard/>}/>
                 <Route path='/paneldashboard' exact element={<PanelDashboard/>}/>
-                
+                <Route path = '/topicAprovalReq' exact element = {<TopicReg/>} />
                 <Route path='/profile/:userRole' exact element={<Profile />} />
                 <Route path='/chat' exact element={<ChanelContainer />} />
                 <Route path='/CreateTeam' exact element={<CreateChannel />} />

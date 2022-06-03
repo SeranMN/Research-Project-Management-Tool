@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const groupSchema = mongoose.Schema({
+const groupSchema = new mongoose.Schema({
     GroupId: {
         type: String,
       required:true  
