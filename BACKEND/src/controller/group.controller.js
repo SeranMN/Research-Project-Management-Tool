@@ -13,7 +13,15 @@ const countGroups = async (req, res) => {
       .then((data) => res.status(200).send({ count: data }))
         .catch((err) => res.send(err).status(500));
 }
+const getGroups = async (req, res) => {
+    await Group.findOne({groupId:req.params.id})
+        .then((data) => res.status(200).send(data))
+        .catch((err) => res.status(500).send(err));
+    
+}
+
 module.exports = {
     addGroup,
-    countGroups
+    countGroups,
+    getGroups
 }

@@ -84,9 +84,9 @@ const CreateStaff = () => {
           label="Age"
           onChange={(e)=>{setSpec(e.target.value)}}
         >
-          <MenuItem value={'machine learning'}>Machine Learning</MenuItem>
-          <MenuItem value={20}>Twenty</MenuItem>
-          <MenuItem value={30}>Thirty</MenuItem>
+          <MenuItem value={'ML'}>Machine Learning</MenuItem>
+          <MenuItem value={'IOT'}>Internet Of Thing</MenuItem>
+          <MenuItem value={'robot'}>Robortics</MenuItem>
         </Select>
             <TextField
               id="outlined-password-input"
