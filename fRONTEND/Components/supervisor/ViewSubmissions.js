@@ -14,9 +14,14 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
-import InputBase from '@mui/material/InputBase';
-import MenuIcon from '@mui/icons-material/Menu';
-import SearchIcon from '@mui/icons-material/Search';
+import Card from '@material-ui/core/Card';
+import CardActionArea from '@material-ui/core/CardActionArea';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
+import Grid from '@mui/material/Grid';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
 
 const StyledTableCell = withStyles((theme) => ({
     head: {
@@ -35,9 +40,6 @@ const StyledTableRow = withStyles((theme) => ({
         },
     },
 }))(TableRow);
-function createData(productName, availableStocks, section, stockstatus) {
-    return { productName, availableStocks, section, stockstatus };
-}
 
 const useStyles = makeStyles({
     bx: {
@@ -54,6 +56,7 @@ const useStyles = makeStyles({
 const ViewSubmissions = ({ subType }) => {
     const classes = useStyles();
     const [submissions, setSubmissions] = useState();
+    const [marking, setMarking] = useState([]);
 
     useEffect(() => {
         function getSubmission() {
@@ -68,33 +71,51 @@ const ViewSubmissions = ({ subType }) => {
 
     }, [])
 
+    useEffect(() => {
+        function getMarking() {
+            axios.get(`http://localhost:5001/markingschemes/submissionType/${subType}`).then((res) => {
+                setMarking(res.data);
+            }).catch((err) => {
+                alert(err.message);
+                console.log(err.message);
+            })
+        }
+        getMarking()
+
+    }, [])
+
     return (
         <div>
-            <TableContainer component={Paper}>
+            {marking.length > 0 &&
+                <div style={{textAlign:'center'}}>
+                    <a style={{textDecoration:'none'}} href={marking[0].avatar}><Button variant='contained'>View Marking Scheme</Button></a>
+                </div>
+            }
+            <TableContainer style={{marginTop:"10px"}} component={Paper}>
                 <Table className={classes.table} aria-label="customized table">
                     <TableHead>
                         <TableRow>
 
                             <StyledTableCell>Group Name</StyledTableCell>
                             <StyledTableCell>File Name</StyledTableCell>
-                            <StyledTableCell align="center">Submitted at</StyledTableCell>                           
+                            <StyledTableCell align="center">Submitted at</StyledTableCell>
                             <StyledTableCell align="center">Status</StyledTableCell>
                             <StyledTableCell >Download</StyledTableCell>
 
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {submissions?.map((submission,index) => (
+                        {submissions?.map((submission, index) => (
                             <StyledTableRow key={index}>
                                 <StyledTableCell component="th" scope="row">
-                                    {submission.name}
+                                    {submission.groupID}
                                 </StyledTableCell>
                                 <StyledTableCell component="th" scope="row">
                                     {submission.cloudinary_id}
                                 </StyledTableCell>
                                 <StyledTableCell align="center">{submission.time}</StyledTableCell>
                                 <StyledTableCell align="center">{submission.time}</StyledTableCell>
-                                <a href={submission.avatar}><StyledTableCell align="center">Download</StyledTableCell></a>
+                                <StyledTableCell align="center"> <a href={submission.avatar}>Download</a></StyledTableCell>
                             </StyledTableRow>
                         ))}
 

@@ -8,6 +8,8 @@ import InsertDriveFileIcon from '@mui/icons-material/InsertDriveFile';
 import axios from 'axios'
 import SubmissionStatus from './SubmissionStatus'
 import { Stack } from '@mui/material'
+import { useParams } from 'react-router-dom'
+const datesBetween = require('dates-between');
 
 const baseStyle = {
     flex: 1,
@@ -26,7 +28,7 @@ const baseStyle = {
     width: '50%',
     marginLeft: 'auto',
     marginRight: 'auto',
-    marginTop:30
+    marginTop: 30
 };
 
 const focusedStyle = {
@@ -43,7 +45,36 @@ const rejectStyle = {
 
 const Submission = () => {
     const [file, setFile] = useState()
-    const [submission, setSubmission] = useState()
+    const [submission, setSubmission] = useState({})
+    const [toggle, setToggle] = useState(false)
+    let params = useParams()
+    const [subType, setSubType] = useState()
+    var today = new Date()
+    var tToday = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+    // const [date,setDate] = useState()
+    const startDate = new Date(tToday);
+    const [count, setCount] = useState()
+    let user = JSON.parse(sessionStorage.getItem("userdet"))
+
+    useEffect(() => {
+        function getSubmission() {
+            axios.get(`http://localhost:5001/submissionType/${params.id}`).then((res) => {
+                setSubType(res.data);
+                console.log(res.data.date, "first")
+                let endDate = new Date(res.data.date);
+                let c = 0
+                for (const date of datesBetween(startDate, endDate)) {
+                    setCount(c++)
+                }
+            }).catch((err) => {
+                alert(err.message);
+                console.log(err.message);
+            })
+        }
+        getSubmission()
+
+    }, [])
+
 
     const onDrop = useCallback((acceptedFiles, rejectFiles) => {
         setFile(acceptedFiles[0])
@@ -55,12 +86,15 @@ const Submission = () => {
     const handleSubmit = () => {
         let formData = new FormData();
         formData.append('file', file)
-        formData.append('name', "Navod")
+        formData.append('name', subType.submissionType)
+        formData.append('groupID', user.groupId)
         formData.append('fileName', file.name)
-        formData.append('folder', "presentation")
+        formData.append('folder', subType.submissionType)
 
         axios.post("http://localhost:5001/submission/create", formData).then((res) => {
             alert('submiited sucessfully')
+            window.location.reload()
+
         }).catch((err) => {
             console.log(err)
         })
@@ -69,11 +103,12 @@ const Submission = () => {
     const handleEdit = () => {
         let formData2 = new FormData();
         formData2.append('file', file)
-        formData2.append('name', "Navod")
+        formData2.append('name', subType.submissionType)
+        formData2.append('groupID', user.groupId)
         formData2.append('fileName', file.name)
-        formData2.append('folder', "presentation")
+        formData2.append('folder', subType.submissionType)
 
-        axios.put(`http://localhost:5001/submission/update/6298bdaddd8b19373e0445d9`, formData2).then((res) => {
+        axios.put(`http://localhost:5001/submission/update/${submission._id}`, formData2).then((res) => {
             alert('Edited sucessfully')
             window.location.reload()
         }).catch((err) => {
@@ -82,17 +117,26 @@ const Submission = () => {
     }
 
     useEffect(() => {
-        function getSubmission() {
-            axios.get("http://localhost:5001/submission/6298bdaddd8b19373e0445d9").then((res) => {
-                setSubmission(res.data);
+        function getSub() {
+            axios.get(`http://localhost:5001/submission/submissionUser/${user.groupId}`).then((res) => {
+                let subs = res.data
+                subs.forEach((sub) => {
+                    if (subType) {
+                        if (sub.name == subType.submissionType) {
+                            setSubmission(sub);
+                            setToggle(true)
+                        }
+                    }
+                })
+
             }).catch((err) => {
                 alert(err.message);
                 console.log(err.message);
             })
         }
-        getSubmission()
+        getSub()
 
-    }, [])
+    }, [subType])
 
     useEffect(() => {
         if (file) {
@@ -127,10 +171,16 @@ const Submission = () => {
     return (
 
         <div>
-            <Typography variant='h4' style={{ textAlign: "center" }}>Answer to assignemnt 1</Typography>
-            <Typography variant='h5' style={{ textAlign: "center", paddingBottom: 8 }}>This is the special message</Typography>
+            {subType &&
+                <div>
+                    <Typography variant='h4' style={{ textAlign: "center" }}>{subType.submissionType}</Typography>
+                    <Typography variant='h5' style={{ textAlign: "center", paddingBottom: 8 }}>{subType.specialMessage}</Typography>
+                    <Typography variant='h5' style={{ textAlign: "center", paddingBottom: 8 }}>{console.log(subType)}</Typography>
+                    <Typography variant='h5' style={{ textAlign: "center", paddingBottom: 8 }}>{console.log(count, "count")}</Typography>
+                </div>
+            }
             <div>
-                <SubmissionStatus submission={submission} />
+                <SubmissionStatus submission={submission} count={count} subType={subType} toggle={toggle} />
             </div>
             <div{...getRootProps({ style })}>
                 <input {...getInputProps()} />
@@ -157,7 +207,8 @@ const Submission = () => {
                 }
 
             </div >
-            {!submission &&
+            {console.log(submission, "ssss")}
+            {!toggle &&
                 <div style={{ textAlign: "center", marginTop: 15 }}>
                     <div>
                         {file && <Button variant='contained' onClick={handleSubmit}>Submit</Button>}
@@ -167,7 +218,7 @@ const Submission = () => {
                     </div>
                 </div>
             }
-            {submission &&
+            {toggle &&
                 <div style={{ textAlign: "center", marginTop: 15 }}>
                     <div>
                         {file && <Button variant='contained' onClick={handleEdit}>Edit Submit</Button>}

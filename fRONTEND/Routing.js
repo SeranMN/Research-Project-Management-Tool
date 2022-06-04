@@ -13,11 +13,13 @@ import CreateStaff from './Components/user/CreateStaff'
 import Creategroup from './Components/Group/Creategroup'
 import Submission from './Components/Submissions/Submission';
 import SupervisorDashboard from './DashBords/supervisorDashboard';
-
 import SupervisorView from './Components/Supervisor/SupervisorView'
 import Reqests from './Components/Supervisor/Requests'
 import TopicReg from './Components/Topic/TopicReg';
 import ViewgroupSup from './Components/Group/ViewgroupSup';
+import SubmissionDashboard from './Components/Submissions/SubmissionDashboard';
+import Template from './Components/Templates/Template';
+
 const Routing = () => {
 
     return (
@@ -35,10 +37,13 @@ const Routing = () => {
                 <Route path='/CreateTeam' exact element={<CreateChannel />} />
                 <Route path='/CreateStaff' exact element={<CreateStaff />} />
                 <Route path='/CreateGroup' exact element={<Creategroup />} />
-                <Route path='/submission' exact element={<Submission />} />
+                <Route path='/submission/:id' exact element={<Submission />} />
                 <Route path='/supervisors' exact element={<SupervisorView />} />
                 <Route path='/requests' exact element={<Reqests />} />
                <Route path='/supViewGroup' exact element={<ViewgroupSup />} />
+              
+                <Route path='/submissiondashboard' exact element={<SubmissionDashboard/>}/>
+                <Route path='/templates' exact element={<Template/>}/>
             </Routes>
         </BrowserRouter>
   );

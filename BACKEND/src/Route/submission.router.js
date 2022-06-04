@@ -17,6 +17,7 @@ router.post("/create", upload.single("file"), async (req, res) => {
         let submission = new Submission({
             name: req.body.name,
             avatar: result.secure_url,
+            groupID: req.body.groupID,
             cloudinary_id: result.public_id,
             time: result.created_at
         });
@@ -71,6 +72,24 @@ router.get("/sub/:type", async (req, res) => {
             console.log(err);
           }
                  
+}); 
+
+router.get("/submissionUser/:grpID", async (req, res) => {
+    console.log("first")
+    
+    try{
+        let grpID = req.params.grpID;
+        await Submission.find({'groupID':grpID})
+            .then((data) => {
+                res.status(200).send(data);
+            })
+            .catch((err) => {
+                res.status(500).send(err);
+            });
+        }catch (err) {
+            console.log(err);
+          }
+                 
 });     
 
 router.put("/update/:id", upload.single("file"), async (req, res) => {
@@ -91,6 +110,7 @@ router.put("/update/:id", upload.single("file"), async (req, res) => {
       const data = {
         name: req.body.name || submission.name,
         avatar: result?.secure_url || submission.avatar,
+        groupID: req.body.groupID || submission.groupID,
         cloudinary_id: result?.public_id || submission.cloudinary_id,
         time:result?.created_at || submission.time
       };

@@ -25,6 +25,9 @@ import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import AddSubmissionTypes from './AddSubmissionTypes';
 import CreatePanel from './CreatePanel';
 import AllocatePanelMember from './AllocatePanelMember';
+import AddDocuments from './AddDocuments';
+import AddMarkingScemes from './AddMarkingScemes';
+
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
@@ -162,7 +165,7 @@ const AdminDashboard = () => {
                 <ListItemText primary="Allocate Pannel" />
             </ListItem>
             <ListItem button onClick={() => {
-                // setView(<ViewHotels />);
+                setView(<AddMarkingScemes />);
                 setHeader({
                     title: 'Add Marking ', icon: <PreviewIcon />
                 });
@@ -174,7 +177,7 @@ const AdminDashboard = () => {
 
             </ListItem>
             <ListItem button onClick={() => {
-                // setView(<ViewHotels />);
+                setView(<AddDocuments />);
                 setHeader({
                     title: 'Add Documents ', icon: <PreviewIcon />
                 });

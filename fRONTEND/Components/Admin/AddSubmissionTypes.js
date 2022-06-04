@@ -41,14 +41,14 @@ const AddSubmissionTypes = () => {
         e.preventDefault()
 
         const newRecipe = {
-            "name": recipeName,
-            "ingredients": ingredients,
-            "description": description
+            "submissionType": subtype,
+            "date": date,
+            "time": time,
+            "specialMessage":message
         }
 
-        axios.post("http://localhost:5000/recipe/add", newRecipe).then((res) => {
-            navigate('/');
-
+        axios.post("http://localhost:5001/submissionType/create", newRecipe).then((res) => {
+            alert('sucessfully submitted')
         }).catch((err) => {
             console.log(err)
 

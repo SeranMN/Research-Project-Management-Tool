@@ -1,12 +1,9 @@
 const mongoose = require("mongoose");
-const submissionSchema = new mongoose.Schema ({
-    name: {
+const documentSchema = new mongoose.Schema ({
+    topic:{
         type: String,
     },
     avatar:{
-        type: String
-    },
-    groupID:{
         type: String
     },
     cloudinary_id: {
@@ -17,4 +14,4 @@ const submissionSchema = new mongoose.Schema ({
     }
 });
 
-module.exports = mongoose.model("submission",submissionSchema);
+module.exports = mongoose.model("documenttemplate",documentSchema);

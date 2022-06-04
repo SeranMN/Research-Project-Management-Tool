@@ -39,12 +39,18 @@ const useStyles = makeStyles((theme) => ({
         borderBottom: "1px solid grey",
         borderLeft: "1px solid grey"
     },
+    outerColumn2: {
+        borderRight: "1px solid grey",
+        borderBottom: "1px solid grey",
+        borderLeft: "1px solid grey",
+        height:"70px"
+    },
     centerColumn: {
         borderBottom: "1px solid grey"
     }
 }));
 
-const SubmissionStatus = ({ submission }) => {
+const SubmissionStatus = ({ submission,count,subType,toggle }) => {
     const classes = useStyles();
 
     return (
@@ -69,34 +75,35 @@ const SubmissionStatus = ({ submission }) => {
                                     <Typography>Due Date</Typography>
                                 </Grid>
                                 <Grid item className={classes.outerColumn}>
-                                    <Typography>Time Remaining</Typography>
+                                    <Typography>Dates Remaining</Typography>
                                 </Grid>
                                 <Grid item className={classes.outerColumn}>
                                     <Typography>Last Modified</Typography>
                                 </Grid>
-                                {submission &&
-                                     <Grid item className={classes.outerColumn}>
+                                {toggle &&
+                                     <Grid item className={classes.outerColumn2}>
                                      <Typography>File submissions</Typography>
                                  </Grid>
                                 }
                             </Grid>
                             <Grid container direction="column" item xs align="center">
-                                {submission ?
+                                {toggle ?
                                     <div>
                                         <Grid item className={classes.outerColumn}>
                                             <Typography>Submitted for grading</Typography>
                                         </Grid>
-
+                                        {subType &&
                                         <Grid item className={classes.outerColumn}>
-                                            <Typography>Center R.</Typography>
+                                            <Typography>{subType.date} {subType.time}</Typography>
+                                        </Grid>
+                                        }
+                                        <Grid item className={classes.outerColumn}>
+                                            <Typography>{count} Days Remaining</Typography>
                                         </Grid>
                                         <Grid item className={classes.outerColumn}>
-                                            <Typography>Bottom R.</Typography>
+                                            <Typography>{submission.time}</Typography>
                                         </Grid>
-                                        <Grid item className={classes.outerColumn}>
-                                            <Typography>Bottom R.</Typography>
-                                        </Grid>
-                                        <Grid item className={classes.outerColumn}>
+                                        <Grid item className={classes.outerColumn2}>
                                             <Typography> 
                                                 <a href={submission.avatar}>
                                                     {submission.cloudinary_id}
@@ -111,13 +118,15 @@ const SubmissionStatus = ({ submission }) => {
                                         </Grid>
 
                                         <Grid item className={classes.outerColumn}>
-                                            <Typography>due date</Typography>
+                                        {subType &&
+                                            <Typography>{subType.date} {subType.time}</Typography>
+                                        }
+                                        </Grid>                                         
+                                        <Grid item className={classes.outerColumn}>
+                                            <Typography>{count} Days Remaining</Typography>
                                         </Grid>
                                         <Grid item className={classes.outerColumn}>
-                                            <Typography>time Remaining</Typography>
-                                        </Grid>
-                                        <Grid item className={classes.outerColumn}>
-                                            <Typography>last modified</Typography>
+                                            <Typography>-</Typography>
                                         </Grid>
                                     </div>
                                 }

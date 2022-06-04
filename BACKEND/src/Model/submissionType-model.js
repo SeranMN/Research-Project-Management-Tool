@@ -1,17 +1,18 @@
 const mongoose = require("mongoose");
 
 const SubmissionTypeSchema = new mongoose.Schema({
-    submissionFormat: { 
+    submissionType: { 
         type: String, 
         required: true 
     },
-    deadline:{
+    date:{
         type:String, 
-        required: true
+    },
+    time:{
+        type:String, 
     },
     specialMessage: { 
         type: String, 
-        required: true 
     },
     
 })
