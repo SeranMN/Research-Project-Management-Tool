@@ -23,6 +23,8 @@ const profile = () => {
       axios.get(`http://localhost:5001/user/${det}`)
         .then((res) => setUser(res.data))
         .catch((err) => console.log(err))
+
+
     } else if (userRole.userRole == 'staff') {
       axios.get(`http://localhost:5001/staff/${det}`)
         .then((res) => setUser(res.data))
@@ -50,13 +52,13 @@ const profile = () => {
             </Typography>
           </CardContent>
         </Box>
-        <Button variant='contained' startIcon={<LogoutIcon />} style={{position:'absolute',right:20,top:20}} onClick={() => { sessionStorage.removeItem('user'); navigate('/') }}>Logout</Button>
+        <Button variant='contained' startIcon={<LogoutIcon />} style={{ position: 'absolute', right: 20, top: 20 }} onClick={() => { sessionStorage.removeItem('user'); navigate('/') }}>Logout</Button>
 
       </Card>
 
-      {userRole.userRole == 'student' ? (<StudentDashboard />) : (<SupDashboard />)}
-      <div style={{position:'absolute',bottom:0,width:'100%'}}>
-        <Footer/>
+      <StudentDashboard />
+      <div style={{ position: 'absolute', bottom: 0, width: '100%' }}>
+        <Footer />
       </div>
     </>
   )

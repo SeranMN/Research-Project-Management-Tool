@@ -15,7 +15,7 @@ const SupDashboard = () => {
                 backgroundColor: "#fff",
               }}
               onClick={() => {
-                navigate("/CreateGroup");
+                navigate("/supViewGroup");
               }}
             >
               <img

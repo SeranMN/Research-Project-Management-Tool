@@ -25,6 +25,9 @@ import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import EvaluateDocuments from '../Components/supervisor/EvaluateDocuments';
 import ChatIcon from '@mui/icons-material/Chat';
 import ArticleIcon from '@mui/icons-material/Article';
+import SendIcon from '@mui/icons-material/Send';
+import Reqests from '../Components/supervisor/Requests'
+import ChanelContainer from '../Components/Chat/ChatContainer';
 
 const drawerWidth = 240;
 
@@ -147,15 +150,33 @@ const SupervisorDashboard = () => {
             </ListItem>
             <ListItem button onClick={() => {
                 // setView(<AddHotels />);
-                setHeader({ title: 'Topics', icon: <AddIcon /> });
+                setHeader({ title: 'Add Marks', icon: <AddIcon /> });
             }}>
                 <ListItemIcon className={classes.ListItemIcon}>
                     <AddIcon />
                 </ListItemIcon>
-                <ListItemText primary="Topics" />
+                <ListItemText primary="Add Marks" />
             </ListItem>
             <ListItem button onClick={() => {
                 // setView(<AddHotels />);
+                setHeader({ title: 'Update Marks', icon: <AddIcon /> });
+            }}>
+                <ListItemIcon className={classes.ListItemIcon}>
+                    <AddIcon />
+                </ListItemIcon>
+                <ListItemText primary="Update Marks" />
+            </ListItem>
+            <ListItem button onClick={() => {
+                setView(<Reqests />);
+                setHeader({ title: 'Request', icon: <AddIcon /> });
+            }}>
+                <ListItemIcon className={classes.ListItemIcon}>
+                    <SendIcon />
+                </ListItemIcon>
+                <ListItemText primary="Request" />
+            </ListItem>
+            <ListItem button onClick={() => {
+                setView(<ChanelContainer />);
                 setHeader({ title: 'Chat', icon: <ChatIcon /> });
             }}>
                 <ListItemIcon className={classes.ListItemIcon}>

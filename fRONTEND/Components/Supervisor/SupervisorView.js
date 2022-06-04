@@ -19,6 +19,7 @@ import MuiAlert from '@mui/material/Alert';
 import { forwardRef } from "react"
 import Header from '../Header/Header'
 import Footer from "../Footer";
+import Divider from '@mui/material/Divider';
 
 const Alert = forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
@@ -72,12 +73,10 @@ console.log(userDet)
     const req = {
       groupid: userDet.groupId,
       supervisorID: supID,
-      topic: topic,
-      topicDes: topicDes,
       status: "pending",
     };
     axios.post("http://localhost:5001/supreq/add", req)
-      .then((res) => { setSnackOpen(true); setMassage('Request Sent Sucessfully'); setSeverity('success') })
+      .then((res) => { setSnackOpen(true); setMassage('Request Sent Sucessfully'); setSeverity('success'); handleClose() })
       .catch((err) => { setSnackOpen(true); setMassage('Request could not sent'); setSeverity('warning'); console.log(err)})
   };
 
@@ -154,25 +153,22 @@ console.log(userDet)
               >
                 Request Supervisor
               </Typography>
-              <TextField
-                variant="standard"
-                label="Topic title"
-                value={topic}
-                onChange={(e) => {
-                  setTopic(e.target.value);
-                }}
-              />
-              <TextareaAutosize
-                aria-label="minimum height"
-                minRows={6}
-                placeholder="Brief Description about research"
-                style={{ width: 500 }}
-                value={topicDes}
-                onChange={(e) =>setTopicDes (
-                  e.target.value)}
-              />
+<Divider />
+              <Typography
+                id="transition-modal-title"
+                
+                component="h2"
+              >
+               Do you want to request 
+              </Typography>
+              <Grid spacing={2}>
+                <Grid item sx={{ md: 3, xs:3 }}>
+              <Button color = 'success' onClick={request}>yes</Button>
+                  <Button color='error' onClick={handleClose}>No</Button>
+                  </Grid>
+              </Grid>
             </Stack>
-            <Button onClick={request}>Request</Button>
+           
           </Box>
         </Fade>
       </Modal>

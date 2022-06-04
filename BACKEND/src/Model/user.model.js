@@ -6,7 +6,8 @@ const userSchema = new mongoose.Schema(
         name: { type: String, required: true },
         email: { type: String, required: true },
         userrole: { type: String, required: true },
-        groupId:{type:String,required:false},
+        groupId: { type: String, required: false },
+        
         createdBy:{type: String, required: true},
         createdOn: { type: String, required: true },
         EditedBy:{type: String, required: false},

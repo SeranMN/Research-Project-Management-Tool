@@ -9,14 +9,7 @@ const suprequest = mongoose.Schema({
         type: String, 
         required:true
     },
-    topic: {
-        type: String,
-        required:true
-    },
-    topicDes: {
-        type: String,
-        required:true
-    },
+   
     status: {
         type: String,
         required:true
