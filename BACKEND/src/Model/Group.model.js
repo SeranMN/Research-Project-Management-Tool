@@ -21,6 +21,10 @@ const groupSchema = new mongoose.Schema({
         type: String,
         required:false
     },
+    releatedArea: {
+        type: String,
+        required:false
+    },
     year: {
         type: String,
         required:true

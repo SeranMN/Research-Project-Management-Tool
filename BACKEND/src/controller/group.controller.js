@@ -24,10 +24,16 @@ const setSupervisors = async (req, res) => {
         .then((data) => res.status(200).send(data))
         .catch((err) => res.status(500).send(err));
 }
+const getGroupsBySupervisor = async (req, res) => {
+    Group.find({ supervisorId: req.params.id })
+        .then((data) => res.status(200).send(data))
+        .catch((err) => res.status(500).send(err));
+}
 
 module.exports = {
     addGroup,
     countGroups,
     getGroups,
-    setSupervisors
+    setSupervisors,
+    getGroupsBySupervisor
 }

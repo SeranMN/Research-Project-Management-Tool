@@ -17,7 +17,7 @@ import SupervisorDashboard from './DashBords/supervisorDashboard';
 import SupervisorView from './Components/Supervisor/SupervisorView'
 import Reqests from './Components/Supervisor/Requests'
 import TopicReg from './Components/Topic/TopicReg';
-import CreatePanel from './Components/Admin/CreatePanel';
+import ViewgroupSup from './Components/Group/ViewgroupSup';
 const Routing = () => {
 
     return (
@@ -38,7 +38,7 @@ const Routing = () => {
                 <Route path='/submission' exact element={<Submission />} />
                 <Route path='/supervisors' exact element={<SupervisorView />} />
                 <Route path='/requests' exact element={<Reqests />} />
-               
+               <Route path='/supViewGroup' exact element={<ViewgroupSup />} />
             </Routes>
         </BrowserRouter>
   );
