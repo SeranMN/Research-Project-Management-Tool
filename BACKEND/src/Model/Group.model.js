@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const groupSchema = mongoose.Schema({
+const groupSchema = new mongoose.Schema({
     GroupId: {
         type: String,
       required:true  
@@ -12,6 +12,22 @@ const groupSchema = mongoose.Schema({
     RegNo: {
         type: Array,
         required:true
+    },
+    supervisorId: {
+        type: String,
+        required:false  
+    },
+    topic: {
+        type: String,
+        required:false
+    },
+    releatedArea: {
+        type: String,
+        required:false
+    },
+    panel: {
+        type: String,
+        required:false
     },
     year: {
         type: String,

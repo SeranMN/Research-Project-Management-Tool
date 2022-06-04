@@ -28,6 +28,7 @@ const setGroupId = async (req, res) => {
         .catch((err) => res.status(500).send(err))
     
 }
+
 module.exports = {
     addUser,
     getUser,

@@ -2,7 +2,10 @@ import React from "react";
 import { Grid, Typography, Paper } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 const StudentDashboard = () => {
+  const userdet = JSON.parse(sessionStorage.getItem("userdet"))
   const navigate = useNavigate();
+
+  
   return (
     <Grid sx={{ flexGrow: 1 }}>
       <Grid item xs={12}>
@@ -15,14 +18,22 @@ const StudentDashboard = () => {
                 backgroundColor: "#fff",
               }}
               onClick={() => {
-                navigate("/CreateGroup");
+                if (userdet.groupId == null) {
+                  navigate("/CreateGroup");
+                } else {
+                  navigate('/topicAprovalReq');
+                }
+                
               }}
             >
               <img
                 height={100}
                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-SRsEyJEb80O0oFKxphavjLuwfRTe4lw-EVEubFhEc3vUTPdS04aK8vz936NBxMLD7Mk&usqp=CAU"
               />
-              <Typography variant="h6">Create Group</Typography>
+              <Typography variant="h6">
+                {userdet.groupId == null ? "Create Group":"Request Aproval to Topic"}
+                
+                </Typography>
             </Paper>
           </Grid>
           <Grid item>

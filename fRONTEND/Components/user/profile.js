@@ -20,6 +20,8 @@ const [user,setUser] =useState([])
       axios.get(`http://localhost:5001/user/${det}`)
         .then((res) => setUser(res.data))
         .catch((err) => console.log(err))
+      
+      
     } else if (userRole.userRole == 'staff') {
       axios.get(`http://localhost:5001/staff/${det}`)
         .then((res) => setUser(res.data))

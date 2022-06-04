@@ -13,6 +13,8 @@ const login = require('./src/Route/login.route');
 const staff = require('./src/Route/staff.route');
 const group = require('./src/Route/group.route')
 const supReq = require('./src/Route/SupReq.rout')
+const topic = require('./src/Route/topic.router');
+const panel = require('./src/Route/panel.route');
 const app = express();
 
 const PORT = process.env.PORT || 5001;
@@ -23,6 +25,8 @@ app.use(bodyParser.json());
 
 connectDB();
 
+app.use("/submission",SubmissionRouter)
+app.use('/topic', topic());
 app.use("/submissionType", SubmissionTypeRouter());
 app.use("/submission",SubmissionRouter)
 app.use("/markingschemes",MarkingSchemesRouter)
@@ -32,6 +36,7 @@ app.use('/login', login())
 app.use('/Staff', staff())
 app.use('/group', group())
 app.use('/supreq', supReq())
+app.use('/panel', panel());
 app.listen(PORT, () => {
     console.log(`App listening at http://localhost:${PORT}`);
   });

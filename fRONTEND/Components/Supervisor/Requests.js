@@ -17,6 +17,7 @@ import { TextareaAutosize } from "@mui/material";
 import { Snackbar } from "@mui/material";
 import MuiAlert from '@mui/material/Alert';
 import { forwardRef } from "react";
+import { setGroupId } from "../../../BACKEND/src/controller/user.controll";
 const Alert = forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
@@ -39,7 +40,7 @@ const SupervisorView = () => {
     const [Question, setQuestion] = useState('');
     const [response, setResponse] =useState('')
     const [open, setOpen] = React.useState(false);
-    
+    const [group,setGroup] = useState('')
     const handleOpen = () =>
     {
         setOpen(true);
@@ -68,17 +69,23 @@ const SupervisorView = () => {
     };
     getRequests();
   }, []);
-console.log(userDet)
+
   const setStatus = () => {
       const req = {
           status: response
         }
       
     
-    axios.put(`http://localhost:5001/supreq/status/${reqId}`,req)
+    axios.put(`http://localhost:5001/supreq/status/${reqId}`, req)
       .then((res) => { setSnackOpen(true); setMassage('Request status changed'); setSeverity('success') })
-          .catch((err) => { setSnackOpen(true); setMassage('Request status could not changed'); setSeverity('warning'); console.log(err) })
-      handleClose()
+      .catch((err) => { setSnackOpen(true); setMassage('Request status could not changed'); setSeverity('warning'); console.log(err) });
+    
+    
+    axios.put(`http://localhost:5001/group/setsupervisor/${group}`, { supervisorId: userDet.regNo })
+      .then((res)=>console.log(res.data))
+      .catch((err) => console.log(err));
+    
+    handleClose();
   };
 
   return (
@@ -96,27 +103,15 @@ console.log(userDet)
             <Box sx={{ maxWidth: 500 }} key={request._id}>
               <Card variant="outlined">
                 <CardContent>
+                 
                   <Typography
                     sx={{ fontSize: 14 }}
                     color="text.primary"
                     gutterBottom
                   >
-                   Topic: {request.topic}
-                  </Typography>
-                  <Typography
-                    sx={{ fontSize: 12 }}
-                    color="text.primary"
-                    gutterBottom
-                  >
                     Group ID: {request.groupid}
                   </Typography>
-                  <Typography
-                    sx={{ fontSize: 12 }}
-                    color="text.primary"
-                    gutterBottom
-                  >
-                    Description: {request.topicDes}
-                  </Typography>
+                 
                 </CardContent>
                 <CardActions>
                           <Button
@@ -125,7 +120,8 @@ console.log(userDet)
                       handleOpen();
                         setReqID(request._id);
                         setQuestion("Accept the request")
-                        setResponse("Accept")
+                      setResponse("Accept")
+                      setGroup(request.groupid)
                     }}
                   >
                     Accept
