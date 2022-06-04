@@ -35,7 +35,7 @@ const style = {
 };
 
 const ViewgroupSup = () => {
-  const userdet = JSON.parse(sessionStorage.getItem('userdet'))
+  const userdet = (sessionStorage.getItem('user'))
   const [groups, setGroups] = useState([]);
   //const [groupId, setGroupId] = useState('');
   const [topic, setTopic] = useState('');
@@ -62,7 +62,7 @@ const handleOpen = () =>
 
 
   useEffect(() => {
-    axios.get(`http://localhost:5001/group/getBySupervisor/${userdet.regNo}`)
+    axios.get(`http://localhost:5001/group/getBySupervisor/${userdet}`)
       .then((res) => { setGroups(res.data) })
       .catch((err) => { console.log(err) })
   }, [])

@@ -33,8 +33,8 @@ const style = {
   p: 4,
 };
 
-const SupervisorView = () => {
-  const userDet = JSON.parse(sessionStorage.getItem('userdet'))
+const Requests = () => {
+  const userDet = (sessionStorage.getItem('user'))
  const [reqId,setReqID] = useState('')
   const [requests, setRequests] = useState([]);
     const [Question, setQuestion] = useState('');
@@ -63,7 +63,7 @@ const SupervisorView = () => {
   useEffect(() => {
     const getRequests = () => {
       axios
-        .get(`http://localhost:5001/supreq/findsup/${userDet.regNo}`)
+        .get(`http://localhost:5001/supreq/findsup/${userDet}`)
         .then((res) => setRequests(res.data))
         .catch((err) => console.log(err));
     };
@@ -81,7 +81,7 @@ const SupervisorView = () => {
       .catch((err) => { setSnackOpen(true); setMassage('Request status could not changed'); setSeverity('warning'); console.log(err) });
     
     
-    axios.put(`http://localhost:5001/group/setsupervisor/${group}`, { supervisorId: userDet.regNo })
+    axios.put(`http://localhost:5001/group/setsupervisor/${group}`, { supervisorId: userDet })
       .then((res)=>console.log(res.data))
       .catch((err) => console.log(err));
     
@@ -176,4 +176,4 @@ const SupervisorView = () => {
   );
 };
 
-export default SupervisorView;
+export default Requests;

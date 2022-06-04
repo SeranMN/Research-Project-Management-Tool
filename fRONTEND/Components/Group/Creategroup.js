@@ -66,7 +66,7 @@ const Creategroup = () => {
       RegNo: [reg1, reg2, reg3, reg4],
       year:year
     }
-    setOpen(true)
+  
 
     axios.post('http://localhost:5001/group/add', group)
       .then(() => {
