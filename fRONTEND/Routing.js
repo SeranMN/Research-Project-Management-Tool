@@ -1,5 +1,12 @@
 import React from 'react'
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
+
+import Addmarks from './Components/Marks/Addmarks'
+import Updatemarks from './Components/Marks/Updatemarks'
+import Viewmarks from './Components/Marks/Viewmarks'
+import Addpresentmarks from './Components/Marks/Addpresentmarks'
+import Viewpresentmarks from './Components/Marks/Viewpresentmarks'
+import Updatepresentmarks from './Components/Marks/Updatepresentmarks'
 import AdminDashboard from './Components/Admin/AdminDashboard';
 import PanelDashboard from './Components/PanelMember/PanelDashboard';
 
@@ -25,6 +32,12 @@ const Routing = () => {
     return (
         <BrowserRouter>
             <Routes>
+                <Route path = '/addmarks' exact element = {<Addmarks/>}/>
+                <Route path = '/updatemarks' exact element = {<Updatemarks/>}/>
+                <Route path = '/viewmarks' exact element = {<Viewmarks/>}/>
+                <Route path = '/addpresentmarks' exact element = {<Addpresentmarks/>}/>
+                <Route path = '/viewpresentmarks' exact element = {<Viewpresentmarks/>}/>
+                <Route path = '/updatepresentmarks' exact element = {<Updatepresentmarks/>}/>
             
                 <Route path='/' exact element={<Login />} />
                 <Route path='/signin' exact element={<CreateAccount />} />
