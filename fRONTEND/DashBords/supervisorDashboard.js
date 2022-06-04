@@ -26,12 +26,14 @@ import EvaluateDocuments from '../Components/supervisor/EvaluateDocuments';
 import ChatIcon from '@mui/icons-material/Chat';
 import ArticleIcon from '@mui/icons-material/Article';
 import SendIcon from '@mui/icons-material/Send';
-import Reqests from '../Components/supervisor/Requests'
+import Requests from '../Components/supervisor/Requests'
 import ChanelContainer from '../Components/Chat/ChatContainer';
 import AddMarks from '../Components/Marks/Addmarks'
 import Updatemarks from '../Components/Marks/Updatemarks'
 import Addpresentmarks from '../Components/Marks/Addpresentmarks'
 import Viewpresentmarks from '../Components/Marks/Viewpresentmarks'
+import ViewgroupSup from '../Components/Group/ViewgroupSup';
+
 
 const drawerWidth = 240;
 
@@ -189,7 +191,7 @@ const SupervisorDashboard = () => {
                 <ListItemText primary="View presentation Marks" />
             </ListItem>
             <ListItem button onClick={() => {
-                setView(<Reqests />);
+                setView(<Requests />);
                 setHeader({ title: 'Request', icon: <AddIcon /> });
             }}>
                 <ListItemIcon className={classes.ListItemIcon}>
@@ -205,6 +207,15 @@ const SupervisorDashboard = () => {
                     <ChatIcon />
                 </ListItemIcon>
                 <ListItemText primary="Chat" />
+            </ListItem>
+            <ListItem button onClick={() => {
+                setView(<ViewgroupSup />);
+                setHeader({ title: 'Chat', icon: <ChatIcon /> });
+            }}>
+                <ListItemIcon className={classes.ListItemIcon}>
+                    <SendIcon />
+                </ListItemIcon>
+                <ListItemText primary="View Group" />
             </ListItem>
             <ListItem button onClick={() => {
                 setView(<EvaluateDocuments />);
