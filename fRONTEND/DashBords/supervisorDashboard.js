@@ -23,6 +23,8 @@ import PreviewIcon from '@mui/icons-material/Preview';
 import { useNavigate } from 'react-router-dom';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import EvaluateDocuments from '../Components/supervisor/EvaluateDocuments';
+import ChatIcon from '@mui/icons-material/Chat';
+import ArticleIcon from '@mui/icons-material/Article';
 
 const drawerWidth = 240;
 
@@ -154,10 +156,10 @@ const SupervisorDashboard = () => {
             </ListItem>
             <ListItem button onClick={() => {
                 // setView(<AddHotels />);
-                setHeader({ title: 'Chat', icon: <AddIcon /> });
+                setHeader({ title: 'Chat', icon: <ChatIcon /> });
             }}>
                 <ListItemIcon className={classes.ListItemIcon}>
-                    <AddIcon />
+                    <ChatIcon />
                 </ListItemIcon>
                 <ListItemText primary="Chat" />
             </ListItem>
@@ -168,7 +170,7 @@ const SupervisorDashboard = () => {
                 });
             }}>
                 <ListItemIcon className={classes.ListItemIcon}>
-                    <PreviewIcon />
+                    <ArticleIcon />
                 </ListItemIcon>
                 <ListItemText primary="Evaluate Documents" />
             </ListItem>

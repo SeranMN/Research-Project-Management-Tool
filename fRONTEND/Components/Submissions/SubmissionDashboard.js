@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react'
-import { Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import axios from 'axios'
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 import { Button } from '@mui/material';
+import Header from '../Header/Header';
+import Footer from '../Footer';
 
 const SubmissionDashboard = () => {
     const [types, setTypes] = useState([])
@@ -26,10 +28,8 @@ const SubmissionDashboard = () => {
 
     return (
         <div>
+            <Header />
             {types.map((type, index) => (
-                <Card
-                    key={index} sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
-                >
                     <Card sx={{ maxWidth: 1400, marginTop: 5, mx: 8, backgroundColor: '#607d8b' }}>
                         <CardActionArea>
                             <CardContent sx={{ flexGrow: 1 }}>
@@ -42,7 +42,7 @@ const SubmissionDashboard = () => {
                                 <Typography marginTop={1} marginLeft={1} >
                                     {type.description}
                                 </Typography>
-                                <Link style={{textDecoration:'none'}} to={`/submission/${type._id}`}>
+                                <Link style={{ textDecoration: 'none' }} to={`/submission/${type._id}`}>
                                     <Button variant='contained'>
                                         View
                                     </Button>
@@ -50,8 +50,10 @@ const SubmissionDashboard = () => {
                             </CardContent>
                         </CardActionArea>
                     </Card>
-                </Card>
             ))}
+            <div style={{ position: 'absolute', bottom: 0, width: '100%' }}>
+                <Footer />
+            </div>
         </div>
     )
 }

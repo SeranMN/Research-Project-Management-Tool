@@ -16,7 +16,10 @@ import Typography from "@mui/material/Typography";
 import { TextareaAutosize } from "@mui/material";
 import { Snackbar } from "@mui/material";
 import MuiAlert from '@mui/material/Alert';
-import { forwardRef } from "react";
+import { forwardRef } from "react"
+import Header from '../Header/Header'
+import Footer from "../Footer";
+
 const Alert = forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
@@ -80,13 +83,13 @@ console.log(userDet)
 
   return (
     <>
+      <Header/>
       <Snackbar open={Snackopen} autoHideDuration={6000} onClose={SnackhandleClose}>
         <Alert onClose={SnackhandleClose} severity={severity} sx={{ width: '100%' }}>
           {massage}
         </Alert>
       </Snackbar>
-
-
+    
       <Grid justifyContent="center" container specing={2}>
         <Grid item xs={4} md={8}>
           {supervisors.map((supervisor) => (
@@ -130,7 +133,6 @@ console.log(userDet)
           ))}
         </Grid>
       </Grid>
-
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
@@ -174,6 +176,7 @@ console.log(userDet)
           </Box>
         </Fade>
       </Modal>
+      
     </>
   );
 };

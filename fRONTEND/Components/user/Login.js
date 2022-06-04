@@ -13,6 +13,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import Snackbar from '@mui/material/Snackbar'
 import { forwardRef } from "react";
 import MuiAlert from '@mui/material/Alert';
+import Background from '../../public/images/Teacheradmin28_9_18.jpg'
 
 const Alert = React.forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
@@ -63,12 +64,11 @@ const Login = () => {
                     sm={6}
                     md={9}
                     sx={{
-                        backgroundImage: `url(https://www.intotheminds.com/blog/app/uploads/desk-research-group-tn.jpg)`,
+                        backgroundImage: `url(${Background})`,
                         backgroundRepeat: 'no-repeat',
                         backgroundColor: (t) =>
                             t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
                         backgroundSize: 'cover',
-                        backgroundPosition: 'center',
                     }}
                 />
       

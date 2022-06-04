@@ -8,6 +8,8 @@ import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 import { Button } from '@mui/material';
 import Grid from '@mui/material/Grid';
+import Header from '../Header/Header';
+import Footer from '../Footer';
 
 const Template = () => {
     const [templates, setTemplates] = useState([])
@@ -26,35 +28,39 @@ const Template = () => {
 
     return (
         <div>
+            <Header />
             {console.log(templates, "sefvsfse")}
             <Grid container spacing={6}>
-            {templates.map((template, index) => (
-               
-                <Grid item key={index} xs={12} sm={6} md={4}>
-                    <Card sx={{ maxWidth: 500, marginTop: 5, mx: 8, backgroundColor: '#607d8b' }}>
-                        <CardMedia
-                            component="img"
-                            image='https://img.icons8.com/nolan/64/template.png'
-                            alt="random"
-                        />
-                        <CardActionArea>
-                            <CardContent sx={{ flexGrow: 1 }}>
-                                <Typography gutterBottom variant="h5" component="h2">
-                                    {template.topic}
-                                </Typography>
-                                <a href={template.avatar}>
-                                    <Button variant='contained'>
-                                        Download Template
-                                    </Button>
-                                </a>
+                {templates.map((template, index) => (
 
-                            </CardContent>
-                        </CardActionArea>
-                    </Card>
+                    <Grid item key={index} xs={12} sm={6} md={4}>
+                        <Card sx={{ maxWidth: 500, marginTop: 5, mx: 8, backgroundColor: '#607d8b' }}>
+                            <CardMedia
+                                component="img"
+                                image='https://img.icons8.com/nolan/64/template.png'
+                                alt="random"
+                            />
+                            <CardActionArea>
+                                <CardContent sx={{ flexGrow: 1 }}>
+                                    <Typography gutterBottom variant="h5" component="h2">
+                                        {template.topic}
+                                    </Typography>
+                                    <a href={template.avatar}>
+                                        <Button variant='contained'>
+                                            Download Template
+                                        </Button>
+                                    </a>
 
-                </Grid>
-            ))}
+                                </CardContent>
+                            </CardActionArea>
+                        </Card>
+
+                    </Grid>
+                ))}
             </Grid>
+            <div style={{ position: 'absolute', bottom: 0, width: '100%' }}>
+                <Footer />
+            </div>
         </div>
     )
 }
