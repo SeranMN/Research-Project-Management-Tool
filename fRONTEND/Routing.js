@@ -8,6 +8,8 @@ import Addmarks from './Components/Marks/Addmarks'
 import Updatemarks from './Components/Marks/Updatemarks'
 import Viewmarks from './Components/Marks/Viewmarks'
 import Addpresentmarks from './Components/Marks/Addpresentmarks'
+import Viewpresentmarks from './Components/Marks/Viewpresentmarks'
+import Updatepresentmarks from './Components/Marks/Updatepresentmarks'
 
 const Routing = () => {
     return (
@@ -17,6 +19,8 @@ const Routing = () => {
                 <Route path = '/updatemarks' exact element = {<Updatemarks/>}/>
                 <Route path = '/viewmarks' exact element = {<Viewmarks/>}/>
                 <Route path = '/addpresentmarks' exact element = {<Addpresentmarks/>}/>
+                <Route path = '/viewpresentmarks' exact element = {<Viewpresentmarks/>}/>
+                <Route path = '/updatepresentmarks' exact element = {<Updatepresentmarks/>}/>
             </Routes>
         </BrowserRouter>
   );

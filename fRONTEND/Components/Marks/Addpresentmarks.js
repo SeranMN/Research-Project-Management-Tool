@@ -35,7 +35,7 @@ function Addpresentmarks() {
 
   return (
     <div className="addmarks">
-         <Card style={{maxWidth:600, margin:"0 auto", padding:"20px 0px"}}>
+         <Card style={{maxWidth:600, margin:"0 auto", padding:"20px 0px", borderStyle:"outset"}}>
              <CardContent>
               <Typography gutterBottom variant='h4' marginLeft={20} marginBottom={5}>Marking Form</Typography>
               

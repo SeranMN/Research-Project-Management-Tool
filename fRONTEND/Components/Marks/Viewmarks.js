@@ -19,9 +19,6 @@ function Viewmarks() {
     }, [])
     
 
-
-
-
   return (
 
     <div className="listofMarks">
@@ -29,7 +26,7 @@ function Viewmarks() {
     {listofmarks.map((value) =>{
       return(
         <div className="markContainer">
-      <div className="mark">
+      <div  key={value.id} className="mark">
         <h3>Group ID:{value.groupID}</h3>
         <h3>Grade:{value.Marks} </h3>
         <h3>Feedback:{value.Comments} </h3>
