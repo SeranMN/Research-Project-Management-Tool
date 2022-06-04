@@ -23,6 +23,8 @@ import PreviewIcon from '@mui/icons-material/Preview';
 import { useNavigate } from 'react-router-dom';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import AddSubmissionTypes from './AddSubmissionTypes';
+import AddDocuments from './AddDocuments';
+import AddMarkingScemes from './AddMarkingScemes';
 
 const drawerWidth = 240;
 
@@ -152,7 +154,7 @@ const AdminDashboard = () => {
                 <ListItemText primary="Allocate Pannel" />
             </ListItem>
             <ListItem button onClick={() => {
-                // setView(<ViewHotels />);
+                setView(<AddMarkingScemes />);
                 setHeader({
                     title: 'Add Marking ', icon: <PreviewIcon />
                 });
@@ -164,7 +166,7 @@ const AdminDashboard = () => {
 
             </ListItem>
             <ListItem button onClick={() => {
-                // setView(<ViewHotels />);
+                setView(<AddDocuments />);
                 setHeader({
                     title: 'Add Documents ', icon: <PreviewIcon />
                 });

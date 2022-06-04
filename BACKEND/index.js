@@ -5,6 +5,8 @@ const dotenv = require('dotenv').config();
 const connectDB = require("./src/config/config");
 const SubmissionTypeRouter = require("./src/Route/submissionType-routes");
 const SubmissionRouter = require("./src/Route/submission.router");
+const MarkingSchemesRouter = require("./src/Route/markingScheme.router")
+const DocumentRouter = require("./src/Route/document.router")
 
 const user = require('./src/Route/user.route');
 const login = require('./src/Route/login.route');
@@ -23,7 +25,8 @@ connectDB();
 
 app.use("/submissionType", SubmissionTypeRouter());
 app.use("/submission",SubmissionRouter)
-
+app.use("/markingschemes",MarkingSchemesRouter)
+app.use("/documenttemplate",DocumentRouter)
 app.use('/user', user());
 app.use('/login', login())
 app.use('/Staff', staff())

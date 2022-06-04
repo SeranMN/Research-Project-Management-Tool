@@ -30,7 +30,7 @@ const ViewDocuments = ({setViewDoc,setViewSubmission,setSubType}) => {
 
     useEffect(() => {
         function getSubmission() {
-            axios.get("http://localhost:5001/submission/").then((res) => {
+            axios.get("http://localhost:5001/submissiontype/").then((res) => {
                 setSubmissionType(res.data);
             }).catch((err) => {
                 alert(err.message);
@@ -44,7 +44,7 @@ const ViewDocuments = ({setViewDoc,setViewSubmission,setSubType}) => {
     const view = (sub) => {
         setViewDoc(false)
         setViewSubmission(true)
-        setSubType(sub.name)
+        setSubType(sub.submissionType)
     }
 
     return (
@@ -64,7 +64,7 @@ const ViewDocuments = ({setViewDoc,setViewSubmission,setSubType}) => {
                             />
                             <CardContent sx={{ flexGrow: 1 }}>
                                 <Typography textAlign={'center'} gutterBottom variant="h5" component="h2">
-                                    {submission.name}
+                                    {submission.submissionType}
                                 </Typography>
                             </CardContent>
                             <CardActions style={{ display: "flex", justifyContent: "space-around" }}>

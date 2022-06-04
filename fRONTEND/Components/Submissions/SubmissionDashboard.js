@@ -1,13 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { Link} from 'react-router-dom'
 import axios from 'axios'
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
-import { Box } from '@mui/material';
-import Chip from '@mui/material/Chip';;
 import { Button } from '@mui/material';
 
 const SubmissionDashboard = () => {
@@ -45,7 +42,7 @@ const SubmissionDashboard = () => {
                                 <Typography marginTop={1} marginLeft={1} >
                                     {type.description}
                                 </Typography>
-                                <Link to={`/submission/${type._id}`}>
+                                <Link style={{textDecoration:'none'}} to={`/submission/${type._id}`}>
                                     <Button variant='contained'>
                                         View
                                     </Button>
