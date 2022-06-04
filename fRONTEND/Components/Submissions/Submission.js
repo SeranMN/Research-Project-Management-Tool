@@ -10,6 +10,8 @@ import SubmissionStatus from './SubmissionStatus'
 import { Stack } from '@mui/material'
 import { useParams } from 'react-router-dom'
 const datesBetween = require('dates-between');
+import Header from '../Header/Header'
+import Footer from '../Footer'
 
 const baseStyle = {
     flex: 1,
@@ -171,8 +173,9 @@ const Submission = () => {
     return (
 
         <div>
+            <Header/>
             {subType &&
-                <div>
+                <div style={{marginTop:10}}>
                     <Typography variant='h4' style={{ textAlign: "center" }}>{subType.submissionType}</Typography>
                     <Typography variant='h5' style={{ textAlign: "center", paddingBottom: 8 }}>{subType.specialMessage}</Typography>
                     <Typography variant='h5' style={{ textAlign: "center", paddingBottom: 8 }}>{console.log(subType)}</Typography>
@@ -229,7 +232,7 @@ const Submission = () => {
                 </div>
             }
 
-
+            
         </div>
     )
 }

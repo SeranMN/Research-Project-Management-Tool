@@ -9,6 +9,8 @@ import axios from "axios";
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
 import { forwardRef } from "react";
+import Header from "../Header/Header";
+import Footer from "../Footer";
 import { useNavigate } from "react-router-dom";
 const Alert = forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
@@ -91,7 +93,7 @@ const Creategroup = () => {
   return (
     <>
       
-    
+      <Header/>
       <Grid container justifyContent="center">
         <Box
           component="form"

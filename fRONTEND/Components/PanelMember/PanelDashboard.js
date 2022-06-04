@@ -22,6 +22,7 @@ import AddIcon from '@mui/icons-material/Add';
 import PreviewIcon from '@mui/icons-material/Preview';
 import { useNavigate } from 'react-router-dom';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
+import TopicIcon from '@mui/icons-material/Topic';
 
 const drawerWidth = 240;
 
@@ -156,7 +157,7 @@ const PanelDashboard = () => {
                 setHeader({ title: 'Evaluate Topics', icon: <AddIcon /> });
             }}>
                 <ListItemIcon className={classes.ListItemIcon}>
-                    <AddIcon />
+                    <TopicIcon />
                 </ListItemIcon>
                 <ListItemText primary="Evaluate Topics" />
             </ListItem>

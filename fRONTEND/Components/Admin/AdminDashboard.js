@@ -27,6 +27,9 @@ import CreatePanel from './CreatePanel';
 import AllocatePanelMember from './AllocatePanelMember';
 import AddDocuments from './AddDocuments';
 import AddMarkingScemes from './AddMarkingScemes';
+import QuizIcon from '@mui/icons-material/Quiz';
+import AssignmentIcon from '@mui/icons-material/Assignment';
+import PublishIcon from '@mui/icons-material/Publish';
 
 const drawerWidth = 240;
 
@@ -171,7 +174,7 @@ const AdminDashboard = () => {
                 });
             }}>
                 <ListItemIcon className={classes.ListItemIcon}>
-                    <PreviewIcon />
+                    <QuizIcon />
                 </ListItemIcon>
                 <ListItemText primary="Add Marking Schemes" />
 
@@ -183,7 +186,7 @@ const AdminDashboard = () => {
                 });
             }}>
                 <ListItemIcon className={classes.ListItemIcon}>
-                    <PreviewIcon />
+                    <AssignmentIcon />
                 </ListItemIcon>
                 <ListItemText primary="Add Documents " />
 
@@ -195,7 +198,7 @@ const AdminDashboard = () => {
                 });
             }}>
                 <ListItemIcon className={classes.ListItemIcon}>
-                    <PreviewIcon />
+                    <PublishIcon />
                 </ListItemIcon>
                 <ListItemText primary="Add Submission Types" />
 
