@@ -19,9 +19,15 @@ const getGroups = async (req, res) => {
         .catch((err) => res.status(500).send(err));
     
 }
+const setSupervisors = async (req, res) => {
+    Group.findOneAndUpdate({ GroupId: req.params.id }, req.body)
+        .then((data) => res.status(200).send(data))
+        .catch((err) => res.status(500).send(err));
+}
 
 module.exports = {
     addGroup,
     countGroups,
-    getGroups
+    getGroups,
+    setSupervisors
 }

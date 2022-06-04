@@ -2,9 +2,7 @@ import React from 'react'
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import AdminDashboard from './Components/Admin/AdminDashboard';
 import PanelDashboard from './Components/PanelMember/PanelDashboard';
-// import Login from './Components/user/Login'
-// import CreateAccount from './Components/user/CreateAccount'
-// import Profile from './Components/user/profile'
+
 import Login from './Components/user/Login'
 import CreateAccount from './Components/user/CreateAccount'
 import Profile from './Components/user/profile'
@@ -19,6 +17,7 @@ import SupervisorDashboard from './DashBords/supervisorDashboard';
 import SupervisorView from './Components/Supervisor/SupervisorView'
 import Reqests from './Components/Supervisor/Requests'
 import TopicReg from './Components/Topic/TopicReg';
+import CreatePanel from './Components/Admin/CreatePanel';
 const Routing = () => {
 
     return (
@@ -38,7 +37,8 @@ const Routing = () => {
                 <Route path='/CreateGroup' exact element={<Creategroup />} />
                 <Route path='/submission' exact element={<Submission />} />
                 <Route path='/supervisors' exact element={<SupervisorView />} />
-                <Route path = '/requests' exact element = {<Reqests/>} />
+                <Route path='/requests' exact element={<Reqests />} />
+               
             </Routes>
         </BrowserRouter>
   );

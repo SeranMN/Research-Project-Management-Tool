@@ -23,7 +23,7 @@ import PreviewIcon from '@mui/icons-material/Preview';
 import { useNavigate } from 'react-router-dom';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import AddSubmissionTypes from './AddSubmissionTypes';
-
+import CreatePanel from './CreatePanel';
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
@@ -143,7 +143,16 @@ const AdminDashboard = () => {
                 <ListItemText primary="Dashboard" />
             </ListItem>
             <ListItem button onClick={() => {
-                setView(<AddHotels />);
+                setView(<CreatePanel />);
+                setHeader({ title: 'Create Panel', icon: <DashboardIcon /> });
+            }}>
+                <ListItemIcon className={classes.ListItemIcon}>
+                    <DashboardIcon />
+                </ListItemIcon>
+                <ListItemText primary="Create Panel" />
+            </ListItem>
+            <ListItem button onClick={() => {
+                setView(<CreatePanel />);
                 setHeader({ title: 'Allocate Pannel Memebers', icon: <AddIcon /> });
             }}>
                 <ListItemIcon className={classes.ListItemIcon}>

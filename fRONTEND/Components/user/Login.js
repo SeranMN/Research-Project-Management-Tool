@@ -36,7 +36,12 @@ const Login = () => {
           
           sessionStorage.setItem("user", det.regNo)
           console.log(det.regNo)
-          navigate(`/profile/${res.data}`)
+          if (res.data == 'admin') {
+            navigate(`/admindashboard`)
+          } else {
+            navigate(`/profile/${res.data}`)
+          }
+          
           
         } else {
          setOpen(true)

@@ -13,6 +13,14 @@ const groupSchema = new mongoose.Schema({
         type: Array,
         required:true
     },
+    supervisorId: {
+        type: String,
+        required:false  
+    },
+    topic: {
+        type: String,
+        required:false
+    },
     year: {
         type: String,
         required:true
