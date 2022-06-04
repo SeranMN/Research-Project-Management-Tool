@@ -3,6 +3,8 @@ const cors = require('cors');
 const bodyParser = require("body-parser");
 const dotenv = require('dotenv').config();
 const connectDB = require("./src/config/config");
+const marksRouter = require("./src/Route/marks");
+const presentRouter = require("./src/Route/presentationmarks");
 const SubmissionTypeRouter = require("./src/Route/submissionType-routes");
 const SubmissionRouter = require("./src/Route/submission.router");
 const MarkingSchemesRouter = require("./src/Route/markingScheme.router")
@@ -24,6 +26,10 @@ app.use(cors());
 app.use(bodyParser.json());
 
 connectDB();
+
+app.use("/marks", marksRouter);
+app.use("/Presentationmarks", presentRouter);
+
 
 app.use("/submission",SubmissionRouter)
 app.use('/topic', topic());

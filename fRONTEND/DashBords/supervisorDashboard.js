@@ -28,6 +28,10 @@ import ArticleIcon from '@mui/icons-material/Article';
 import SendIcon from '@mui/icons-material/Send';
 import Reqests from '../Components/supervisor/Requests'
 import ChanelContainer from '../Components/Chat/ChatContainer';
+import AddMarks from '../Components/Marks/Addmarks'
+import Updatemarks from '../Components/Marks/Updatemarks'
+import Addpresentmarks from '../Components/Marks/Addpresentmarks'
+import Viewpresentmarks from '../Components/Marks/Viewpresentmarks'
 
 const drawerWidth = 240;
 
@@ -149,7 +153,7 @@ const SupervisorDashboard = () => {
                 <ListItemText primary="Dashboard" />
             </ListItem>
             <ListItem button onClick={() => {
-                // setView(<AddHotels />);
+                setView(<AddMarks/>);
                 setHeader({ title: 'Add Marks', icon: <AddIcon /> });
             }}>
                 <ListItemIcon className={classes.ListItemIcon}>
@@ -158,13 +162,31 @@ const SupervisorDashboard = () => {
                 <ListItemText primary="Add Marks" />
             </ListItem>
             <ListItem button onClick={() => {
-                // setView(<AddHotels />);
+                setView(<Updatemarks/>);
                 setHeader({ title: 'Update Marks', icon: <AddIcon /> });
             }}>
                 <ListItemIcon className={classes.ListItemIcon}>
                     <AddIcon />
                 </ListItemIcon>
                 <ListItemText primary="Update Marks" />
+            </ListItem>
+            <ListItem button onClick={() => {
+                setView(<Addpresentmarks/>);
+                setHeader({ title: 'Add Presentation Marks', icon: <AddIcon /> });
+            }}>
+                <ListItemIcon className={classes.ListItemIcon}>
+                    <AddIcon />
+                </ListItemIcon>
+                <ListItemText primary="Add Presentation Marks" />
+            </ListItem>
+            <ListItem button onClick={() => {
+                setView(<Viewpresentmarks/>);
+                setHeader({ title: 'View Presentation Marks', icon: <AddIcon /> });
+            }}>
+                <ListItemIcon className={classes.ListItemIcon}>
+                    <AddIcon />
+                </ListItemIcon>
+                <ListItemText primary="View presentation Marks" />
             </ListItem>
             <ListItem button onClick={() => {
                 setView(<Reqests />);
