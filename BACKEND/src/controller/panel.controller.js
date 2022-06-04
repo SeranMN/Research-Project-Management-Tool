@@ -14,7 +14,14 @@ const countPanel = (req, res) => {
         .catch((err) => res.status(500).send(err));
 }
 
+const getPanels = (req, res) => {
+    Panel.find()
+        .then((data) => res.status(200).send(data))
+        .catch((err) => res.status(500).send(err));
+}
+
 module.exports = {
     addPanel,
-    countPanel
+    countPanel,
+    getPanels
 }

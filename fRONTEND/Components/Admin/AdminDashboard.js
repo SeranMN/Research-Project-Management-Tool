@@ -24,6 +24,7 @@ import { useNavigate } from 'react-router-dom';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import AddSubmissionTypes from './AddSubmissionTypes';
 import CreatePanel from './CreatePanel';
+import AllocatePanelMember from './AllocatePanelMember';
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
@@ -152,7 +153,7 @@ const AdminDashboard = () => {
                 <ListItemText primary="Create Panel" />
             </ListItem>
             <ListItem button onClick={() => {
-                setView(<CreatePanel />);
+                setView(<AllocatePanelMember />);
                 setHeader({ title: 'Allocate Pannel Memebers', icon: <AddIcon /> });
             }}>
                 <ListItemIcon className={classes.ListItemIcon}>

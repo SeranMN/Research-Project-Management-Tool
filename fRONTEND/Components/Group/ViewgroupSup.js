@@ -14,6 +14,13 @@ import Modal from '@mui/material/Modal';
 import Fade from '@mui/material/Fade';
 import { Topic } from '@mui/icons-material';
 
+import { Snackbar } from "@mui/material";
+import MuiAlert from '@mui/material/Alert';
+import { forwardRef } from "react";
+import { setGroupId } from "../../../BACKEND/src/controller/user.controll";
+const Alert = forwardRef(function Alert(props, ref) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
 
 const style = {
   position: "absolute",
@@ -41,6 +48,19 @@ const handleOpen = () =>
     }
   const handleClose = () => setOpen(false);
 
+   const [Snackopen, setSnackOpen] = useState(false);
+ 
+  const SnackhandleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setSnackOpen(false)
+   
+  };
+  const [massage, setMassage] = useState();
+  const [severity, setSeverity] = useState();
+
+
   useEffect(() => {
     axios.get(`http://localhost:5001/group/getBySupervisor/${userdet.regNo}`)
       .then((res) => { setGroups(res.data) })
@@ -64,13 +84,17 @@ const handleOpen = () =>
 
     }
     axios.put(`http://localhost:5001/group/setsupervisor/${topic.groupId}`, respone)
-      .then(console.log('Sucess'))
-      .catch((err) => console.log(err));
+      .then(()=>{setSnackOpen(true); setMassage('Request status changed'); setSeverity('success') })
+      .catch((err) => {setSnackOpen(true); setMassage('Request status could not changed'); setSeverity('warning'); console.log(err)});
     handleClose()
   }
   return (
     <>
-      
+      <Snackbar open={Snackopen} autoHideDuration={6000} onClose={SnackhandleClose}>
+        <Alert onClose={SnackhandleClose} severity={severity} sx={{ width: '100%' }}>
+          {massage}
+        </Alert>
+      </Snackbar>
        
       <Stack spacing={2}>
 

@@ -7,6 +7,11 @@ const addGroup = (req, res) => {
         .catch((err) => res.status(500).send(err));
     console.log(req.body)
 }
+const getAll = async (req, res) => {
+    Group.find()
+        .then((data) => { res.status(200).send(data) })
+        .catch((err) => res.status(500).send(err));
+}
 const countGroups = async (req, res) => {
     const year = req.params.year;
   await  Group.countDocuments({year:year})
@@ -35,5 +40,6 @@ module.exports = {
     countGroups,
     getGroups,
     setSupervisors,
-    getGroupsBySupervisor
+    getGroupsBySupervisor,
+    getAll
 }

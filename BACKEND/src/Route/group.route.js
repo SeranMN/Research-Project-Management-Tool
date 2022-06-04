@@ -6,6 +6,7 @@ module.exports = function () {
     route.get('/count/:year', groupController.countGroups);
     route.get('/:id', groupController.getGroups);
     route.put('/setsupervisor/:id', groupController.setSupervisors);
-    route.get('/getBySupervisor/:id',groupController.getGroupsBySupervisor)
+    route.get('/getBySupervisor/:id', groupController.getGroupsBySupervisor)
+    route.get('/', groupController.getAll);
     return route
 }

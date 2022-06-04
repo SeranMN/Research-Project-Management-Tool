@@ -6,5 +6,6 @@ const router = require('./submission.router');
 module.exports = function () {
     route.post('/add', panelController.addPanel);
     route.get('/count', panelController.countPanel);
+    route.get('/', panelController.getPanels);
     return route
 }

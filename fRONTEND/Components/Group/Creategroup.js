@@ -9,10 +9,14 @@ import axios from "axios";
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
 import { forwardRef } from "react";
+import { useNavigate } from "react-router-dom";
 const Alert = forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
 const Creategroup = () => {
+
+  const navigate = useNavigate();
+
   const [name1, setName1] = useState('');
   const [reg1, setReg1] = useState('');
 
@@ -79,7 +83,9 @@ const Creategroup = () => {
         setMassage('Error in Group Creating')
         setSeverity('warning')
         console.log(err);
-    })
+      })
+    
+    navigate('/topicAprovalReq');
    }
 
   return (

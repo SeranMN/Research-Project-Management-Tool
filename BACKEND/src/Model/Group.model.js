@@ -25,6 +25,10 @@ const groupSchema = new mongoose.Schema({
         type: String,
         required:false
     },
+    panel: {
+        type: String,
+        required:false
+    },
     year: {
         type: String,
         required:true
