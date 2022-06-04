@@ -6,6 +6,9 @@ const submissionSchema = new mongoose.Schema ({
     avatar:{
         type: String
     },
+    groupID:{
+        type: String
+    },
     cloudinary_id: {
         type: String
     },

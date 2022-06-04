@@ -4,6 +4,7 @@ const bodyParser = require("body-parser");
 const dotenv = require('dotenv').config();
 const connectDB = require("./src/config/config");
 const SubmissionTypeRouter = require("./src/Route/submissionType-routes");
+const SubmissionRouter = require("./src/Route/submission.router");
 
 const user = require('./src/Route/user.route');
 const login = require('./src/Route/login.route');
@@ -21,7 +22,7 @@ app.use(bodyParser.json());
 connectDB();
 
 app.use("/submissionType", SubmissionTypeRouter());
-
+app.use("/submission",SubmissionRouter)
 
 app.use('/user', user());
 app.use('/login', login())

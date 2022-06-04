@@ -70,7 +70,7 @@ const StudentDashboard = () => {
                 backgroundColor: "#fff",
               }}
               onClick={() => {
-                navigate("/submission");
+                navigate("/submissiondashboard");
               }}
             >
               <img

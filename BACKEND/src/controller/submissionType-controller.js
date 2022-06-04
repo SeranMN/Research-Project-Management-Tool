@@ -5,10 +5,11 @@ const addSubmissionType = async (req,res)=>{
     if(req.body){
       
             const data={
-                submissionFormat: req.body.submissionFormat,
-                deadline: req.body.deadline,
+                submissionType: req.body.submissionType,
+                date: req.body.date,
+                time: req.body.time,
                 specialMessage: req.body.specialMessage,
-            
+
             }
             const submissionType = new SubmissionType(data);
           
@@ -29,6 +30,14 @@ const getAllSubmissionTypes = async (req, res) => {
         .catch(error => {
             res.send(error);
         });
+}
+
+const getSubmissionType = async (req, res) => {
+    console.log(req.params.id)
+    SubmissionType.findById(req.params.id)
+        .then((data) => { res.status(200).send(data); console.log(data)})
+        .catch((err) => res.send(err))
+    
 }
 
 
@@ -68,5 +77,6 @@ module.exports = {
     addSubmissionType,
     getAllSubmissionTypes,
     updateSubmissionType,
-    deleteSubmissionType
+    deleteSubmissionType,
+    getSubmissionType
 }
